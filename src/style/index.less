@@ -1,0 +1,91 @@
+/**
+ * FreeRoam 组件样式
+ *
+ * 约定：
+ * 1. 所有类名以 `fr-` 为前缀，避免与宿主页面冲突
+ * 2. 不稳定生效的视觉值走 CSS 变量，使用者可在自己的样式里覆盖
+ * 3. 不使用 scoped —— 提示内容是使用者的 VNode，scoped 对它不生效；
+ *    统一靠前缀避让，而不是靠作用域隔离
+ */
+
+.fr-guide {
+  // 可在自己的样式里覆盖这些变量来定制主题
+  --fr-mask-color: rgb(0 0 0 / 30%);
+  --fr-z-index: 9999;
+  --fr-primary: #5a8cff;
+  --fr-tip-bg: #fff;
+  --fr-tip-color: #333;
+  --fr-tip-radius: 8px;
+  --fr-tip-padding: 15px 20px;
+  --fr-tip-gap: 8px;
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: var(--fr-z-index);
+  width: 100%;
+  height: 100%;
+
+  &__mask {
+    display: block;
+  }
+
+  &__mask-bg {
+    // 遮罩颜色：SVG 元素同样受 CSS 变量控制
+    fill: var(--fr-mask-color);
+  }
+}
+
+/**
+ * 提示气泡的默认外观。
+ * 不是必须使用的——在 content 里给根元素加上 `class="fr-tip"` 即可获得这套样式，
+ * 也可以完全自己写。气泡的定位（left / top）始终由使用者决定。
+ */
+.fr-tip {
+  position: absolute;
+  padding: var(--fr-tip-padding);
+  font-size: 13px;
+  color: var(--fr-tip-color);
+  background: var(--fr-tip-bg);
+  border-radius: var(--fr-tip-radius);
+
+  &__title {
+    padding-bottom: 11px;
+    font-size: 15px;
+    color: var(--fr-primary);
+  }
+
+  // 操作按钮行：多个按钮之间留出间距
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--fr-tip-gap);
+    justify-content: flex-end;
+  }
+
+  // 指向挖洞区域的小箭头：旋转 45° 的方块，露出一半
+  &__arrow {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: inherit;
+    transform: rotate(45deg);
+  }
+
+  // 气泡在下方 → 箭头贴其上边缘；其余方位同理
+  &--bottom .fr-tip__arrow {
+    top: -5px;
+  }
+
+  &--top .fr-tip__arrow {
+    bottom: -5px;
+  }
+
+  &--right .fr-tip__arrow {
+    left: -5px;
+  }
+
+  &--left .fr-tip__arrow {
+    right: -5px;
+  }
+}

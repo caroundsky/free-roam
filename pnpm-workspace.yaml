@@ -1,0 +1,7 @@
+# 本机（Windows 未开启开发者模式）无符号链接权限，使用 hoisted 模式避免 EPERM
+nodeLinker: hoisted
+allowBuilds:
+  esbuild: true
+  vue-demi: true
+minimumReleaseAgeExclude:
+  - less@4.9.1

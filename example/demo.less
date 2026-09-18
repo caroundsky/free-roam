@@ -1,0 +1,302 @@
+// 演示页共享样式（非 scoped，全局一份）
+
+.demo {
+  min-height: 100vh;
+  padding: 32px 24px 64px;
+  background: #f5f6f8;
+
+  &__header {
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #1f2329;
+  }
+
+  &__subtitle {
+    margin: 8px 0 0;
+    font-size: 13px;
+    color: #8a9099;
+  }
+
+  &__tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    max-width: 960px;
+    margin: 0 auto 20px;
+  }
+
+  &__tab {
+    padding: 7px 16px;
+    font-size: 13px;
+    color: #646a73;
+    cursor: pointer;
+    background: #fff;
+    border: 1px solid #e8eaed;
+    border-radius: 999px;
+    transition: all 0.15s;
+
+    &:hover {
+      color: #5a8cff;
+      border-color: #b9cdff;
+    }
+
+    &--active {
+      color: #fff;
+      background: #5a8cff;
+      border-color: #5a8cff;
+    }
+  }
+
+  &__body {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+}
+
+.scene {
+  background: #fff;
+  border: 1px solid #e8eaed;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgb(31 35 41 / 4%);
+
+  &__head {
+    padding: 20px 24px 0;
+
+    h2 {
+      margin: 0 0 6px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #1f2329;
+    }
+
+    p {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.7;
+      color: #646a73;
+    }
+
+    code {
+      padding: 1px 5px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 12px;
+      color: #5a8cff;
+      background: #eef3ff;
+      border-radius: 4px;
+    }
+  }
+
+  // 预览舞台：被引导高亮的元素都放在这里
+  &__stage {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    min-height: 180px;
+    padding: 32px 24px;
+    margin: 20px 24px 0;
+    background: repeating-linear-gradient(45deg, #fafbfc, #fafbfc 10px, #f6f7f9 10px, #f6f7f9 20px);
+    border: 1px dashed #e0e3e8;
+    border-radius: 8px;
+
+    // 需要纵向堆叠的舞台
+    &--top {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 20px;
+    }
+  }
+
+  &__foot {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 24px 24px;
+  }
+
+  &__start {
+    padding: 9px 22px;
+    font-size: 14px;
+    color: #fff;
+    cursor: pointer;
+    background: #5a8cff;
+    border: none;
+    border-radius: 6px;
+    transition: background 0.15s;
+
+    &:hover {
+      background: #4a7cf0;
+    }
+  }
+
+  &__code {
+    padding: 16px 20px;
+    margin: 0 24px 24px;
+    overflow-x: auto;
+    font-family: Consolas, Monaco, monospace;
+    font-size: 12px;
+    line-height: 1.7;
+    color: #4a5058;
+    background: #fafbfc;
+    border: 1px solid #eef0f3;
+    border-radius: 8px;
+  }
+}
+
+// 舞台里的模拟元素
+.mock-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  padding: 20px 28px;
+  background: #fff;
+  border: 1px solid #e8eaed;
+  border-radius: 8px;
+}
+
+.mock-btn {
+  padding: 8px 20px;
+  font-size: 14px;
+  color: #fff;
+  cursor: pointer;
+  background: #5a8cff;
+  border: none;
+  border-radius: 6px;
+
+  &--sm {
+    padding: 5px 14px;
+    font-size: 13px;
+    border-radius: 5px;
+  }
+
+  &--ghost {
+    color: #646a73;
+    background: #fff;
+    border: 1px solid #dfe2e8;
+
+    &:hover {
+      color: #5a8cff;
+      border-color: #b9cdff;
+    }
+  }
+}
+
+.mock-input {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #dfe2e8;
+  border-radius: 6px;
+  outline: none;
+
+  &:focus {
+    border-color: #5a8cff;
+  }
+}
+
+.mock-nav {
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: #fff;
+  border: 1px solid #e8eaed;
+  border-radius: 8px;
+}
+
+.mock-nav__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  color: #646a73;
+  cursor: pointer;
+  border-radius: 6px;
+
+  &:hover {
+    background: #f2f4f7;
+  }
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.mock-table {
+  width: 100%;
+  font-size: 13px;
+  color: #4a5058;
+  border-collapse: collapse;
+
+  th,
+  td {
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid #eef0f3;
+  }
+
+  th {
+    font-weight: 500;
+    color: #8a9099;
+    background: #fafbfc;
+  }
+
+  tbody tr:last-child td {
+    border-bottom: none;
+  }
+}
+
+// 演示里高亮被引导圈出的元素（配合 ctx.addBodyClass 使用）
+body.tsx-demo-highlight #tsx-table {
+  box-shadow: inset 0 0 0 2px #c9d8ff;
+}
+
+body.biz-highlight-save #biz-save {
+  color: #fff;
+  background: #4a7cf0;
+  box-shadow: 0 0 0 4px rgb(90 140 255 / 18%);
+}
+
+body.biz-filter-expanded .biz__filter-extra {
+  display: flex !important;
+}
+
+// 引导运行时插入 body 的示意图（非 scoped，因为它不属于任何组件）
+.biz-panel {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  margin: auto;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+// 业务回归场景里的气泡，文案较长，给个宽一点的约束
+.biz-tip {
+  width: 320px;
+  line-height: 1.7;
+
+  &__close {
+    position: relative;
+    top: -2px;
+    float: right;
+    font-size: 14px;
+    color: #b0b6bf;
+    cursor: pointer;
+
+    &:hover {
+      color: #8a9099;
+    }
+  }
+}
