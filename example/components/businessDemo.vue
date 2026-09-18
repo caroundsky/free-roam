@@ -105,8 +105,8 @@
 
 <script setup lang="tsx">
 import { ref } from 'vue'
-import { FreeRoam, FreeRoamTip, imgLoad, resolveSafe } from 'free-roam'
-import type { StepContext, StepResolver } from 'free-roam'
+import { FreeRoam, FreeRoamTip, imgLoad, resolveSafe } from '@caroundsky/free-roam'
+import type { StepContext, StepResolver } from '@caroundsky/free-roam'
 import panelSrc from '../assets/guide-custom.png'
 
 defineOptions({ name: 'BusinessDemo' })

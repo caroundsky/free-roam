@@ -1,6 +1,6 @@
 import { defineComponent, ref } from 'vue'
-import { FreeRoam } from 'free-roam'
-import type { StepContext, StepResolver } from 'free-roam'
+import { FreeRoam } from '@caroundsky/free-roam'
+import type { StepContext, StepResolver } from '@caroundsky/free-roam'
 import { tipBelow } from '../tip'
 
 /** 在 tsx 里渲染一个提示气泡 */

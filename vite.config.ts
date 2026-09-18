@@ -22,7 +22,7 @@ export default defineConfig({
   resolve: {
     alias: {
       // 组件本体就在 src/ 下，示例里以包名引入，等价于真实的消费方式
-      'free-roam': '/src',
+      '@caroundsky/free-roam': '/src',
       '@': '/src',
       '~': './',
     },

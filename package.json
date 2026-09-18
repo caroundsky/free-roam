@@ -1,5 +1,5 @@
 {
-  "name": "free-roam",
+  "name": "@caroundsky/free-roam",
   "private": true,
   "type": "module",
   "packageManager": "pnpm@11.25.0",

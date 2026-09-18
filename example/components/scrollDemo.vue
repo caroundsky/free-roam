@@ -76,7 +76,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { FreeRoam, FreeRoamTip } from 'free-roam'
+import { FreeRoam, FreeRoamTip } from '@caroundsky/free-roam'
 
 defineOptions({ name: 'ScrollDemo' })
 

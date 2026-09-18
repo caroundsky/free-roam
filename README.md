@@ -12,23 +12,15 @@
 - **运行时依赖只有一个**：`@floating-ui/dom`
 
 > 📖 **[在线示例](https://caroundsky.github.io/free-roam/)** —— 五种用法的可交互演示，比文档直观
->
-> 用法细节直接看示例源码即可，本文只讲**引入、加载与 API**。
 
 ---
 
 ## 安装
 
 ```bash
-pnpm add free-roam
+pnpm add @caroundsky/free-roam
 # 或 npm i free-roam / yarn add free-roam
 ```
-
-> 尚未发布到 npm 时，可先用 git 依赖：
->
-> ```bash
-> pnpm add github:caroundsky/free-roam
-> ```
 
 ## 引入
 
@@ -36,8 +28,8 @@ pnpm add free-roam
 
 ```ts
 import { createApp } from 'vue'
-import FreeRoam from 'free-roam' // 组件对象自带 install
-import 'free-roam/style.css' // ⚠️ 样式需单独引入，漏了会没有遮罩与气泡外观
+import FreeRoam from '@caroundsky/free-roam' // 组件对象自带 install
+import '@caroundsky/free-roam/style.css' // ⚠️ 样式需单独引入，漏了会没有遮罩与气泡外观
 
 const app = createApp(App)
 app.use(FreeRoam)
@@ -48,8 +40,8 @@ app.mount('#app')
 
 ```vue
 <script setup lang="ts">
-import { FreeRoam, FreeRoamTip } from 'free-roam'
-import 'free-roam/style.css'
+import { FreeRoam, FreeRoamTip } from '@caroundsky/free-roam'
+import '@caroundsky/free-roam/style.css'
 </script>
 
 <template>
@@ -66,9 +58,9 @@ import 'free-roam/style.css'
 组件提供 UMD 产物，暴露全局 `FreeRoam`：
 
 ```html
-<link rel="stylesheet" href="https://unpkg.com/free-roam/dist-lib/free-roam.css" />
+<link rel="stylesheet" href="https://unpkg.com/@caroundsky/free-roam/dist-lib/free-roam.css" />
 <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
-<script src="https://unpkg.com/free-roam/dist-lib/free-roam.umd.js"></script>
+<script src="https://unpkg.com/@caroundsky/free-roam/dist-lib/free-roam.umd.js"></script>
 <script>
   const { FreeRoam, FreeRoamTip } = window.FreeRoam
 
@@ -86,7 +78,7 @@ import 'free-roam/style.css'
 组件样式**不会自动注入**，必须显式引入一次：
 
 ```ts
-import 'free-roam/style.css'
+import '@caroundsky/free-roam/style.css'
 ```
 
 样式用 `fr-` 前缀命名，全部挂在 `.fr-guide` 下，不会污染宿主页面。主题与层级通过 CSS 变量暴露，可在自己的样式里覆盖：
@@ -127,9 +119,9 @@ import 'free-roam/style.css'
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { FreeRoam, FreeRoamTip } from 'free-roam'
-import type { StepConfig } from 'free-roam'
-import 'free-roam/style.css'
+import { FreeRoam, FreeRoamTip } from '@caroundsky/free-roam'
+import type { StepConfig } from '@caroundsky/free-roam'
+import '@caroundsky/free-roam/style.css'
 
 const guideRef = ref<InstanceType<typeof FreeRoam> | null>(null)
 const steps: StepConfig[] = [{ rect: '#submit' }]
@@ -264,7 +256,7 @@ import {
   FreeRoamTip, // 气泡组件（自动定位 + 箭头）
   resolveSafe, // 选择器 / 元素 / null → 视口坐标（取不到时兜底 0,0）
   imgLoad, // 等待图片就绪，配合 waitFor 使用
-} from 'free-roam'
+} from '@caroundsky/free-roam'
 
 import type {
   StepConfig,
@@ -277,10 +269,8 @@ import type {
   RectPadding,
   ContentInput,
   Placement, // 透出自 @floating-ui/dom
-} from 'free-roam'
+} from '@caroundsky/free-roam'
 ```
-
-全局注册用组件对象自带的 `install`（`app.use(FreeRoam)`），不需要单独导入。
 
 > **写 `steps` 时建议标注 `StepConfig[]`**：
 >
@@ -293,8 +283,3 @@ import type {
 > 不标注的话，`offset: [-10, -10]` 会被 TS 推断成 `number[]`，与要求的 `[number, number]` 不符而报错。标注后既能通过，也保留了「必须是两个元素」的约束。
 
 ---
-
-## 相关文档
-
-- [设计文档](docs/free-roam-spec.md) —— 关键设计决策与取舍
-- [单组件库结构规范](docs/component-lib-spec.md) —— 本项目的目录约定，可复用到其他单组件库

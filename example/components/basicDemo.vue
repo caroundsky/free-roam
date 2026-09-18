@@ -61,7 +61,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { FreeRoam, FreeRoamTip } from 'free-roam'
+import { FreeRoam, FreeRoamTip } from '@caroundsky/free-roam'
 
 defineOptions({ name: 'BasicDemo' })
 
@@ -78,7 +78,7 @@ const steps = [
   {},
 ]
 
-const code = `import { FreeRoam, FreeRoamTip } from 'free-roam'
+const code = `import { FreeRoam, FreeRoamTip } from '@caroundsky/free-roam'
 
 const steps = [
   { rect: '#basic-submit' },                   // 默认外扩一圈

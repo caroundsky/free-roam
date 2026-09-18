@@ -1,4 +1,4 @@
-import type { StepContext } from 'free-roam'
+import type { StepContext } from '@caroundsky/free-roam'
 
 // 用 type 而非 interface：interface 不具备隐式索引签名，无法赋值给 Vue 的 CSSProperties
 type TipStyle = {

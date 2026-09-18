@@ -52,7 +52,7 @@
 </template>
 
 <script setup lang="ts">
-import { FreeRoam } from 'free-roam'
+import { FreeRoam } from '@caroundsky/free-roam'
 
 const steps = [{ rect: '#submit', content: '点这里提交' }]
 </script>
@@ -63,7 +63,7 @@ const steps = [{ rect: '#submit', content: '点这里提交' }]
 ### 3.2 常用：目标 + 微调 / 多洞 / 异步目标
 
 ```ts
-import { nextTick, resolveSafe } from 'free-roam'
+import { nextTick, resolveSafe } from '@caroundsky/free-roam'
 
 const steps: StepConfig[] = [
   // ① 目标 + 偏移 + 自定义尺寸
@@ -218,23 +218,37 @@ type ContentInput = string | number | ((ctx: StepContext) => unknown) | object
 
 > `ctx.rects` 是当前挖洞矩形的**响应式**快照——提示气泡要贴在目标旁边时用它算位置，坐标随 resize 变化会自动带动气泡重排。
 
-### 4.6 对外导出的工具函数
+### 4.6 对外导出
+
+导出面刻意收得很窄：**两个组件 + 两个工具函数**，其余都是内部实现（一旦导出就成了公开 API，从此不能随便改）。
 
 ```ts
 import {
   FreeRoam,
   FreeRoamTip, // 气泡组件：自动定位 + 指向箭头
-  resolveTargetPosition, // 元素 → 视口坐标
-  resolveSafe, // 选择器/元素/null → 视口坐标（兜底 0,0）
-  querySingleDom, // 查询单个 DOM
-  imgLoad, // 等待图片就绪
-  addBodyClass, // 加 body 类名
-  removeBodyClass, // 移除 body 类名
-  resolveRect, // RectInput → RectCoordinate 求值器
-  createStepMachine, // 步骤状态机（框架无关）
-  install, // 全局注册 app.use(FreeRoam)
-} from 'free-roam'
+  resolveSafe, // 选择器 / 元素 / null → 视口坐标（兜底 0,0）
+  imgLoad, // 等待图片就绪，配合 waitFor 使用
+} from '@caroundsky/free-roam'
 ```
+
+类型（来自构建产出的 `.d.ts`）：
+
+```ts
+import type {
+  StepConfig,
+  StepContext,
+  StepResolver,
+  StepsInput,
+  RectInput,
+  RectCoordinate,
+  RectTargetConfig,
+  RectPadding,
+  ContentInput,
+  Placement, // 透出自 @floating-ui/dom
+} from '@caroundsky/free-roam'
+```
+
+`install` 挂在组件对象上（`app.use(FreeRoam)`），不作具名导出。
 
 ---
 
@@ -281,7 +295,7 @@ type RectInput =
 
 #### 内边距（`padding`）
 
-取元素自身尺寸时，挖洞会**默认向外扩一圈**（8px）——高亮区比元素大一圈，视觉上更透气：
+取元素自身尺寸时，挖洞会**默认向外扩一圈**——高亮区比元素大一圈，视觉上更透气：
 
 ```ts
 type RectPadding = boolean | number | [number, number]
@@ -529,7 +543,7 @@ index.html                     # 指向 example/main.ts
 演示侧以**包名**引入，与组件发布后使用者的写法完全一致：
 
 ```ts
-import { FreeRoam, resolveSafe } from 'free-roam'
+import { FreeRoam, resolveSafe } from '@caroundsky/free-roam'
 ```
 
 Vite 侧靠 `vite.config.ts` 的 alias（`'free-roam': '/src'`）映射到源码，TS 侧靠 `tsconfig.json` 的 `paths`，两边都不需要预先构建。

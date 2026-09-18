@@ -89,8 +89,8 @@
 
 <script setup lang="ts">
 import { nextTick, ref } from 'vue'
-import { FreeRoam, FreeRoamTip, resolveSafe } from 'free-roam'
-import type { RectCoordinate, StepConfig } from 'free-roam'
+import { FreeRoam, FreeRoamTip, resolveSafe } from '@caroundsky/free-roam'
+import type { RectCoordinate, StepConfig } from '@caroundsky/free-roam'
 
 defineOptions({ name: 'AdvancedDemo' })
 
