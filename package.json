@@ -1,10 +1,10 @@
 {
   "name": "@caroundsky/free-roam",
-  "private": true,
+  "private": false,
   "type": "module",
   "packageManager": "pnpm@11.25.0",
   "version": "0.1.0",
-  "description": "通用漫游引导组件",
+  "description": "漫游式引导组件，高亮页面上的任意元素，配上一段提示，逐步引导用户熟悉界面",
   "main": "./dist-lib/free-roam.umd.js",
   "module": "./dist-lib/free-roam.es.js",
   "types": "./dist-lib/index.d.ts",
@@ -60,5 +60,8 @@
     "unplugin-auto-import": "^21.1.0",
     "vite": "^8.2.2",
     "vue-tsc": "^3.3.11"
-  }
+  },
+  "keywords": [
+    "tour"
+  ]
 }
